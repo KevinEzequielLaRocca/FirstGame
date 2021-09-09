@@ -1,0 +1,59 @@
+using System;
+
+namespace SegundoProyecto
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] score = new int[5];
+            
+            int ingresar, Continue;
+
+            for(int i = 0; i<5; i++)
+            {
+                Console.WriteLine("Dame la puntuación del {0}° programador:", i + 1);
+                ingresar = int.Parse(Console.ReadLine());
+                score[i] = ingresar;
+            }
+
+            Array.Sort(score);
+            Console.WriteLine("Puntuación ordenada de menor a mayor:");
+            for (int i = 0; i < 5; i++)
+            {
+                
+                Console.Write(score[i] + " ");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Deseas agregar más programadores? Indica la cantidad...");
+            Continue = int.Parse(Console.ReadLine());
+            int[] score2 = new int[Continue];
+
+            switch (Continue)
+            {
+                case -1: Console.WriteLine("No se agregan mas programadores. Fin del concurso.");
+                    break;
+                case 1:
+                case 2:
+                case 3:  for(int i = 0; i<Continue; i++)
+                    {
+                        Console.WriteLine("Dame la puntuación del nuevo programador: ");
+                        ingresar = int.Parse(Console.ReadLine());
+                        score2[i] = ingresar;
+                    }
+                    int[] score3 = new int[score.Length + score2.Length];
+
+                    score.CopyTo(score3, 0);
+                    score2.CopyTo(score3, score.Length);
+                    Array.Sort(score3);
+                    for(int i = 0; i<score3.Length; i++)
+                    {
+                        Console.Write(score3[i] + " ");
+                    }
+                    break;
+                default: Console.WriteLine("Número erroneo.");
+                    break;
+            } 
+        }
+    }
+}
