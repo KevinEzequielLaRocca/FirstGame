@@ -1,0 +1,46 @@
+using System;
+
+namespace PrimerProyecto
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int Size, Accountant = 0, number;
+
+            Console.WriteLine("Give me the number of digits the number will have: ");
+            Size = int.Parse(Console.ReadLine());
+
+            int[] digitos = new int[Size];
+            Random rnd = new Random();
+
+            int numeroRandom = rnd.Next((int)Math.Pow(10, Size - 1), (int)(Math.Pow(10, Size) - 1));
+
+            do
+            {
+                Console.WriteLine("Enter your number: ");
+                number = int.Parse(Console.ReadLine());
+                if (number < numeroRandom)
+                {
+                    Console.WriteLine("Its value is less than the random number".);
+
+                    Accountant++;
+
+                }
+                else if (number > numeroRandom)
+                {
+                    Console.WriteLine("Its value is greater than the random number.");
+
+                    Accountant++;
+                }
+                else
+                {
+                    Accountant++;
+                    Console.WriteLine("Congratulations, you have won. It took you {0} attempts.", Accountant);
+                }
+            } while (numeroRandom != number);
+
+                
+            }
+        }
+    }
